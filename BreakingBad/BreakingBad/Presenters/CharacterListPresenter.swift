@@ -5,10 +5,11 @@
 //  Created by Hugo Reyes on 12/19/21.
 //
 
-import Foundation
+import SwiftUI
 
 class CharacterListPresenter : ObservableObject{
     private var interactor : CharacterListInteractor
+    private let router = CharacterListViewRouter()
     
     @Published var model : [BreakingBadCharacter]
     
@@ -23,6 +24,17 @@ class CharacterListPresenter : ObservableObject{
             guard let result = rawResult else {return}
             self.model = result
             
+        }
+    }
+    
+    func linkBuilder<Content: View>(
+        for trip: BreakingBadCharacter,
+        @ViewBuilder content: () -> Content
+      ) -> some View {
+        NavigationLink(
+          destination: router.makeDetailView(
+            for: trip)) {
+              content()
         }
     }
 

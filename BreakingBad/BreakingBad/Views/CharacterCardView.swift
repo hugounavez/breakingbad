@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CharacterCardView: View {
     
@@ -13,11 +14,33 @@ struct CharacterCardView: View {
     
     var body: some View {
         VStack{
-            Image("araguaney").resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 320, height: 320, alignment: .center)
-            Text(self.presenter.model.name)
-            Text(self.presenter.model.nickname)
+            if let imageUrl = self.presenter.model.img {
+                if let url = URL(string: imageUrl){
+                    KFImage(url).placeholder({
+                        Image("araguaney").resizable()
+                            //.aspectRatio(contentMode: .fill)
+                            .cornerRadius(10)
+                            .frame(width: 250, height: 350, alignment: .center)
+                    }).resizable()
+                        .cornerRadius(10)
+                        .frame(width: 250, height: 350, alignment: .center)
+                        
+                }
+            }
+            
+            if let name = self.presenter.model.name {
+                Text(name)
+                    .fontWeight(.medium)
+                    .frame(width: 250, height: 25, alignment: .leading)
+                    
+            }
+            
+            if let nickname = self.presenter.model.nickname{
+                Text(nickname)
+                    .frame(width: 250, height: 25, alignment: .leading)
+            }
+                
+            
         }
         
     }

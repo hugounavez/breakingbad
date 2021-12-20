@@ -18,8 +18,7 @@ struct CharacterListView: View {
                 List{
                     ForEach(0...self.presenter.model.count - 1, id: \.self){
                         index in
-                        //CharacterCardView()
-                        Text("test")
+                        CharacterCardView(presenter: CharacterCardViewPresenter(interactor: CharacterCardViewInteractor(model: self.presenter.model[index])))
                     }
                     
                 }.navigationTitle("Breaking Bad")
