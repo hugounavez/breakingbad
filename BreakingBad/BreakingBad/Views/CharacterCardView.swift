@@ -24,7 +24,6 @@ struct CharacterCardView: View {
                     }).resizable()
                         .cornerRadius(10)
                         .frame(width: 250, height: 350, alignment: .center)
-                        
                 }
             }
             

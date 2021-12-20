@@ -34,6 +34,7 @@ class CharacterListPresenter : ObservableObject{
         NavigationLink(
           destination: router.makeDetailView(
             for: trip)) {
+                
               content()
         }
     }

@@ -18,7 +18,12 @@ struct CharacterListView: View {
                 List{
                     ForEach(0...self.presenter.model.count - 1, id: \.self){
                         index in
-                        CharacterCardView(presenter: CharacterCardViewPresenter(interactor: CharacterCardViewInteractor(model: self.presenter.model[index])))
+                     
+                        let model = self.presenter.model[index]
+                        self.presenter.linkBuilder(for: model) {
+                            CharacterCardView(presenter: CharacterCardViewPresenter(interactor: CharacterCardViewInteractor(model: model)))
+                        }
+                        
                     }
                     
                 }.navigationTitle("Breaking Bad")

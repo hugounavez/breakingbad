@@ -30,6 +30,8 @@
 		B7D51F5B276F880000F50860 /* CharacterListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F59276F880000F50860 /* CharacterListPresenter.swift */; };
 		B7D51F5D2770163200F50860 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F5C2770163200F50860 /* CharacterDetailView.swift */; };
 		B7D51F5F2770168A00F50860 /* CharacterListViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F5E2770168A00F50860 /* CharacterListViewRouter.swift */; };
+		B7D51F612770286B00F50860 /* CharacterDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F602770286B00F50860 /* CharacterDetailInteractor.swift */; };
+		B7D51F632770289100F50860 /* CharacterDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F622770289100F50860 /* CharacterDetailPresenter.swift */; };
 		D00BBA6DC7D95A8DCB7037BB /* Pods_BreakingBad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 863324BFC353139854E19E16 /* Pods_BreakingBad.framework */; };
 		D144B09FDD633EA5D1D26E95 /* Pods_BreakingBadTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86E341BE2E64F9F95A3A4CE /* Pods_BreakingBadTests.framework */; };
 /* End PBXBuildFile section */
@@ -80,6 +82,8 @@
 		B7D51F59276F880000F50860 /* CharacterListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenter.swift; sourceTree = "<group>"; };
 		B7D51F5C2770163200F50860 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		B7D51F5E2770168A00F50860 /* CharacterListViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewRouter.swift; sourceTree = "<group>"; };
+		B7D51F602770286B00F50860 /* CharacterDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailInteractor.swift; sourceTree = "<group>"; };
+		B7D51F622770289100F50860 /* CharacterDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenter.swift; sourceTree = "<group>"; };
 		D222561A1AA487963E29EC92 /* Pods-BreakingBad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakingBad.release.xcconfig"; path = "Target Support Files/Pods-BreakingBad/Pods-BreakingBad.release.xcconfig"; sourceTree = "<group>"; };
 		D86E341BE2E64F9F95A3A4CE /* Pods_BreakingBadTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakingBadTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC23A31A9E439AF34E613121 /* Pods_BreakingBad_BreakingBadUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakingBad_BreakingBadUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +218,7 @@
 			children = (
 				B773EE1C276D127C0047B9FF /* CharacterCardViewInteractor.swift */,
 				B7D51F56276F86D600F50860 /* CharacterListInteractor.swift */,
+				B7D51F602770286B00F50860 /* CharacterDetailInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			children = (
 				B773EE1A276D12630047B9FF /* CharacterCardViewPresenter.swift */,
 				B7D51F59276F880000F50860 /* CharacterListPresenter.swift */,
+				B7D51F622770289100F50860 /* CharacterDetailPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -491,12 +497,14 @@
 				B773EDE4276C3C440047B9FF /* Persistence.swift in Sources */,
 				B7D51F5D2770163200F50860 /* CharacterDetailView.swift in Sources */,
 				B773EE13276C3ECA0047B9FF /* CharacterListView.swift in Sources */,
+				B7D51F612770286B00F50860 /* CharacterDetailInteractor.swift in Sources */,
 				B773EE1B276D12630047B9FF /* CharacterCardViewPresenter.swift in Sources */,
 				B773EDDD276C3C420047B9FF /* ContentView.swift in Sources */,
 				B773EE0F276C3D350047B9FF /* NetworkRouter.swift in Sources */,
 				B7D51F5F2770168A00F50860 /* CharacterListViewRouter.swift in Sources */,
 				B7D51F5A276F880000F50860 /* CharacterListPresenter.swift in Sources */,
 				B773EE1D276D127C0047B9FF /* CharacterCardViewInteractor.swift in Sources */,
+				B7D51F632770289100F50860 /* CharacterDetailPresenter.swift in Sources */,
 				B7D51F57276F86D600F50860 /* CharacterListInteractor.swift in Sources */,
 				B773EDE7276C3C440047B9FF /* BreakingBad.xcdatamodeld in Sources */,
 				B773EDDB276C3C420047B9FF /* BreakingBadApp.swift in Sources */,

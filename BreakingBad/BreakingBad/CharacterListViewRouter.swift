@@ -8,8 +8,10 @@
 import SwiftUI
 
 class CharacterListViewRouter {
-  func makeDetailView(for trip: BreakingBadCharacter) -> some View {
+  func makeDetailView(for model: BreakingBadCharacter) -> some View {
             
-    return CharacterDetailView()
+      let interactor = CharacterDetailInteractor(model: model)
+      let presenter = CharacterDetailPresenter(interactor: interactor)
+      return CharacterDetailView(presenter: presenter)
   }
 }
