@@ -15,18 +15,13 @@ class CharacterListInteractor {
     }
     
     func getCharacterList(completion: @escaping ([BreakingBadCharacter]?) -> ()){
-        
         ServiceLayer.request(router: .getCharacters) { (result: Result<[BreakingBadCharacter], Error>) in
             switch result {
               case .success(let data):
-                  print("success")
-                self.model = data
                 completion(data)
               case .failure:
-                    print("failure")
                 completion(nil)
               }
         }
     }
-    
 }
