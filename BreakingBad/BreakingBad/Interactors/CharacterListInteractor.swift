@@ -7,7 +7,12 @@
 
 import Foundation
 
-class CharacterListInteractor {
+protocol CharacterListUseCase : AnyObject {
+    func getCharacterList(completion: @escaping ([BreakingBadCharacter]?) -> ())
+}
+
+
+class CharacterListInteractor : CharacterListUseCase {
     var model: [BreakingBadCharacter]
     
     init(model: [BreakingBadCharacter] = []){

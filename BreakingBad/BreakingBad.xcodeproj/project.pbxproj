@@ -39,6 +39,10 @@
 		B7AD67722772E5ED0083866D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD67642772CF7F0083866D /* SearchView.swift */; };
 		B7AD67732772E5F30083866D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD67662772CFA80083866D /* MainTabView.swift */; };
 		B7AD67742772E5F60083866D /* NetworkServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773EE10276C3D610047B9FF /* NetworkServiceLayer.swift */; };
+		B7AD677827740D860083866D /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD677727740D860083866D /* SearchViewPresenter.swift */; };
+		B7AD677927740D860083866D /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD677727740D860083866D /* SearchViewPresenter.swift */; };
+		B7AD677B27741BBF0083866D /* SearchViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD677A27741BBF0083866D /* SearchViewInteractor.swift */; };
+		B7AD677C27741BBF0083866D /* SearchViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD677A27741BBF0083866D /* SearchViewInteractor.swift */; };
 		B7D51F57276F86D600F50860 /* CharacterListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F56276F86D600F50860 /* CharacterListInteractor.swift */; };
 		B7D51F58276F86D600F50860 /* CharacterListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F56276F86D600F50860 /* CharacterListInteractor.swift */; };
 		B7D51F5A276F880000F50860 /* CharacterListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F59276F880000F50860 /* CharacterListPresenter.swift */; };
@@ -95,6 +99,8 @@
 		B773EE1C276D127C0047B9FF /* CharacterCardViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewInteractor.swift; sourceTree = "<group>"; };
 		B7AD67642772CF7F0083866D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		B7AD67662772CFA80083866D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		B7AD677727740D860083866D /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
+		B7AD677A27741BBF0083866D /* SearchViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInteractor.swift; sourceTree = "<group>"; };
 		B7D51F56276F86D600F50860 /* CharacterListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListInteractor.swift; sourceTree = "<group>"; };
 		B7D51F59276F880000F50860 /* CharacterListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenter.swift; sourceTree = "<group>"; };
 		B7D51F5C2770163200F50860 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 				B773EE1C276D127C0047B9FF /* CharacterCardViewInteractor.swift */,
 				B7D51F56276F86D600F50860 /* CharacterListInteractor.swift */,
 				B7D51F602770286B00F50860 /* CharacterDetailInteractor.swift */,
+				B7AD677A27741BBF0083866D /* SearchViewInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -258,6 +265,7 @@
 				B773EE1A276D12630047B9FF /* CharacterCardViewPresenter.swift */,
 				B7D51F59276F880000F50860 /* CharacterListPresenter.swift */,
 				B7D51F622770289100F50860 /* CharacterDetailPresenter.swift */,
+				B7AD677727740D860083866D /* SearchViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -532,6 +540,8 @@
 				B773EDE4276C3C440047B9FF /* Persistence.swift in Sources */,
 				B7D51F5D2770163200F50860 /* CharacterDetailView.swift in Sources */,
 				B773EE13276C3ECA0047B9FF /* CharacterListView.swift in Sources */,
+				B7AD677827740D860083866D /* SearchViewPresenter.swift in Sources */,
+				B7AD677B27741BBF0083866D /* SearchViewInteractor.swift in Sources */,
 				B7AD67672772CFA80083866D /* MainTabView.swift in Sources */,
 				B7D51F612770286B00F50860 /* CharacterDetailInteractor.swift in Sources */,
 				B773EE1B276D12630047B9FF /* CharacterCardViewPresenter.swift in Sources */,
@@ -562,7 +572,9 @@
 				B7D51F58276F86D600F50860 /* CharacterListInteractor.swift in Sources */,
 				B7D51F5B276F880000F50860 /* CharacterListPresenter.swift in Sources */,
 				B7AD676E2772E5E00083866D /* CharacterDetailInteractor.swift in Sources */,
+				B7AD677C27741BBF0083866D /* SearchViewInteractor.swift in Sources */,
 				B7AD676D2772E5DC0083866D /* CharacterCardViewInteractor.swift in Sources */,
+				B7AD677927740D860083866D /* SearchViewPresenter.swift in Sources */,
 				B7AD67722772E5ED0083866D /* SearchView.swift in Sources */,
 				B7AD67692772E5B30083866D /* CharacterListViewRouter.swift in Sources */,
 				B7AD67742772E5F60083866D /* NetworkServiceLayer.swift in Sources */,

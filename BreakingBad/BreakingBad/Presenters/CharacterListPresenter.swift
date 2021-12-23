@@ -7,15 +7,20 @@
 
 import SwiftUI
 
-class CharacterListPresenter : ObservableObject{
-    private var interactor : CharacterListInteractor
+protocol CharacterListPresenterUseCase {
+    func getCharacterList()
+}
+
+
+class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase{
+    private var interactor : CharacterListUseCase
     private let router = CharacterListViewRouter()
     
     @Published var model : [BreakingBadCharacter]
     
-    init(interactor: CharacterListInteractor){
+    init(interactor: CharacterListUseCase){
         self.interactor = interactor
-        self.model = self.interactor.model
+        self.model = []
     }
     
     

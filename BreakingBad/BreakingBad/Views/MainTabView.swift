@@ -19,7 +19,7 @@ struct MainTabView: View {
                 
             }
             
-            SearchView().tabItem {
+            SearchView(presenter: SearchViewPresenter(interactor: SearchViewInteractor(model: model))).tabItem {
                 Image(systemName: "magnifyingglass")
                 Text("Test")
             }

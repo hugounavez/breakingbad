@@ -9,35 +9,39 @@ import SwiftUI
 
 
 struct SearchView: View {
-    @State var searchText = ""
+    //@State var searchText = ""
     @State var isSearching = false
-
+    
+    @ObservedObject var presenter : SearchViewPresenter
+    
     var body: some View {
         NavigationView {
         VStack {
-            SearchBar(searchText: $searchText, isSearching: $isSearching)
-            ScrollView{
-                ForEach((0..<20).filter({ "\($0)".contains(searchText) || searchText.isEmpty }), id: \.self) { num in
-                    
-                    HStack {
-                        Text("\(num)")
-                        Spacer()
-                    }.padding()
-                    
-                    Divider()
-                        .background(Color(.systemGray4))
-                        .padding(.leading)
+            SearchBar(searchText: $presenter.searchText, isSearching: $isSearching)
+                List{
+                    if (self.presenter.model.count > 0){
+                        ForEach(0...self.presenter.model.count - 1, id: \.self) { index in
+                            let model = self.presenter.model[index]
+                            CharacterCardView(presenter: CharacterCardViewPresenter(interactor: CharacterCardViewInteractor(model: model)))
+
+                        }
+                    }
                 }
-            }
+            
         }
+            
             
         .navigationTitle("Search")
         }
         
-        
-        
+        .onAppear {
+            self.presenter.getCharacterList()
+        }
         
     }
+    
+
+    
 }
 
 
@@ -45,7 +49,11 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        let model = BreakingBadCharacter(name: "Juanchope", id: 1, birthday: "", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Szczenie_Jack_Russell_Terrier3.jpg/711px-Szczenie_Jack_Russell_Terrier3.jpg", status: "Perrito", nickname: "El zurdo", portrayed: "", category: "-", occupation: ["S"], appearance: [1])
+        let interactor = SearchViewInteractor(model: [model])
+        let presenter = SearchViewPresenter(interactor: interactor)
+        
+        SearchView(presenter: presenter)
     }
 }
 
