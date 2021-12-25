@@ -38,7 +38,15 @@ struct CharacterCardView: View {
                 Text(nickname)
                     .frame(width: 250, height: 25, alignment: .leading)
             }
-                
+             
+            
+            Text("Seasons").fontWeight(.medium)
+                .frame(width: 250, height: 25, alignment: .leading)
+            
+            
+            Text(self.presenter.seasonsLabel).fontWeight(.regular)
+                .frame(width: 250, height: 25, alignment: .leading)
+            
             
         }
         

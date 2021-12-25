@@ -9,10 +9,9 @@ import SwiftUI
 
 
 struct SearchView: View {
-    //@State var searchText = ""
     @State var isSearching = false
-    
     @ObservedObject var presenter : SearchViewPresenter
+    @State private var showingSheet = false
     
     var body: some View {
         NavigationView {
@@ -32,6 +31,16 @@ struct SearchView: View {
             
             
         .navigationTitle("Search")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("+") {
+                    print("Help tapped!")
+                    showingSheet.toggle()
+                }.sheet(isPresented: $showingSheet) {
+                    SheetView(selectedOption: $presenter.season)
+                }
+            }
+        }
         }
         
         .onAppear {

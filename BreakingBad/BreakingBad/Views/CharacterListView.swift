@@ -11,7 +11,7 @@ struct CharacterListView: View {
     
     @ObservedObject var presenter : CharacterListPresenter
     @State private var showingSheet = false
-    
+    @State private var selectedOption = Season.all
     
     var body: some View {
         
@@ -39,7 +39,7 @@ struct CharacterListView: View {
                                 print("Help tapped!")
                                 showingSheet.toggle()
                             }.sheet(isPresented: $showingSheet) {
-                                SheetView()
+                                SheetView(selectedOption: self.$selectedOption)
                             }
                         }
                     }
@@ -67,15 +67,3 @@ struct CharacterListView_Previews: PreviewProvider {
 }
 
 
-struct SheetView: View {
-    @Environment(\.dismiss) var dismiss
-
-    var body: some View {
-        Button("Press to dismiss") {
-            dismiss()
-        }
-        .font(.title)
-        .padding()
-        .background(Color.black)
-    }
-}

@@ -32,6 +32,9 @@ struct CharacterDetailView: View {
             Text("Name").fontWeight(.medium)
                 .frame(width: 250, height: 25, alignment: .leading)
             
+            Divider().padding(.leading).padding(.trailing)
+            
+            
             if let name = self.presenter.model.name {
                 Text(name).fontWeight(.regular)
                     .frame(width: 250, height: 25, alignment: .leading)
@@ -41,10 +44,15 @@ struct CharacterDetailView: View {
 //                Text(occupation)
 //            }
             
-            Divider()
+            
+            
             
             Text("Status").fontWeight(.medium)
                 .frame(width: 250, height: 25, alignment: .leading)
+            
+           // Divider().padding(.leading).padding(.trailing)
+            
+            
             if let status = self.presenter.model.status {
                 Text(status).fontWeight(.regular)
                     .frame(width: 250, height: 25, alignment: .leading)
@@ -58,7 +66,16 @@ struct CharacterDetailView: View {
                     .frame(width: 250, height: 25, alignment: .leading)
             }
             
-            Divider()
+            
+            Text("Seasons").fontWeight(.medium)
+                .frame(width: 250, height: 25, alignment: .leading)
+            
+            
+            Text(self.presenter.seasonsLabel).fontWeight(.regular)
+                .frame(width: 250, height: 25, alignment: .leading)
+            
+            
+            //Divider()
              
         } // End of VStack
             

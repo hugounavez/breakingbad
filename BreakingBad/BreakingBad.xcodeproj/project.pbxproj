@@ -43,6 +43,7 @@
 		B7AD677927740D860083866D /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD677727740D860083866D /* SearchViewPresenter.swift */; };
 		B7AD677B27741BBF0083866D /* SearchViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD677A27741BBF0083866D /* SearchViewInteractor.swift */; };
 		B7AD677C27741BBF0083866D /* SearchViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD677A27741BBF0083866D /* SearchViewInteractor.swift */; };
+		B7AD677E2776243B0083866D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD677D2776243B0083866D /* SheetView.swift */; };
 		B7D51F57276F86D600F50860 /* CharacterListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F56276F86D600F50860 /* CharacterListInteractor.swift */; };
 		B7D51F58276F86D600F50860 /* CharacterListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F56276F86D600F50860 /* CharacterListInteractor.swift */; };
 		B7D51F5A276F880000F50860 /* CharacterListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D51F59276F880000F50860 /* CharacterListPresenter.swift */; };
@@ -101,6 +102,7 @@
 		B7AD67662772CFA80083866D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		B7AD677727740D860083866D /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
 		B7AD677A27741BBF0083866D /* SearchViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInteractor.swift; sourceTree = "<group>"; };
+		B7AD677D2776243B0083866D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		B7D51F56276F86D600F50860 /* CharacterListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListInteractor.swift; sourceTree = "<group>"; };
 		B7D51F59276F880000F50860 /* CharacterListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenter.swift; sourceTree = "<group>"; };
 		B7D51F5C2770163200F50860 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				B7D51F5C2770163200F50860 /* CharacterDetailView.swift */,
 				B7AD67642772CF7F0083866D /* SearchView.swift */,
 				B7AD67662772CFA80083866D /* MainTabView.swift */,
+				B7AD677D2776243B0083866D /* SheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				B7AD67652772CF7F0083866D /* SearchView.swift in Sources */,
 				B7D51F5A276F880000F50860 /* CharacterListPresenter.swift in Sources */,
 				B773EE1D276D127C0047B9FF /* CharacterCardViewInteractor.swift in Sources */,
+				B7AD677E2776243B0083866D /* SheetView.swift in Sources */,
 				B7D51F632770289100F50860 /* CharacterDetailPresenter.swift in Sources */,
 				B7D51F57276F86D600F50860 /* CharacterListInteractor.swift in Sources */,
 				B773EDE7276C3C440047B9FF /* BreakingBad.xcdatamodeld in Sources */,

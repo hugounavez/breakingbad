@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
     var body: some View {
         let model =  [BreakingBadCharacter(name: "", id: 1, birthday: "", img: "", status: "", nickname: "", portrayed: "", category: "", occupation: [""], appearance: [1])]
         

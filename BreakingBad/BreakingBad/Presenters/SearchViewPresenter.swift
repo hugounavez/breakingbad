@@ -13,6 +13,9 @@ class SearchViewPresenter : ObservableObject, CharacterListPresenterUseCase {
     
     @Published var model : [BreakingBadCharacter]
     
+
+    @Published var season : Season = .all
+    
     var originalModel : [BreakingBadCharacter]
     @Published var searchText = "" {
         didSet {
@@ -41,7 +44,25 @@ class SearchViewPresenter : ObservableObject, CharacterListPresenterUseCase {
     }
     
     func filterBy(text: String){
-        self.model = self.originalModel.filter({$0.name.contains(text)})
+        
+        switch self.season {
+        case .all:
+            self.model = self.originalModel.filter({$0.name.contains(text)})
+        case .one:
+            self.model = self.originalModel.filter({$0.name.contains(text) && $0.appearance.contains(1)})
+        case .two:
+            self.model = self.originalModel.filter({$0.name.contains(text) && $0.appearance.contains(2)})
+        case .three:
+            self.model = self.originalModel.filter({$0.name.contains(text) && $0.appearance.contains(3)})
+        case .four:
+            self.model = self.originalModel.filter({$0.name.contains(text) && $0.appearance.contains(4)})
+        default:
+            self.model = self.originalModel.filter({$0.name.contains(text) && $0.appearance.contains(5)})
+            break
+        }
+        
     }
+    
+
     
 }
