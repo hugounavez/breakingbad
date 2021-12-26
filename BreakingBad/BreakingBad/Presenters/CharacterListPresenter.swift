@@ -12,15 +12,18 @@ protocol CharacterListPresenterUseCase {
 }
 
 
-class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase{
+class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, CharacterListInteractorDelegate{
+    func modelHasChanged(data: [BreakingBadCharacter]) {
+        self.model = data
+    }
+    
     private var interactor : CharacterListUseCase
     private let router = CharacterListViewRouter()
     
-    @Published var model : [BreakingBadCharacter]
+    @Published var model : [BreakingBadCharacter] = []
     
     init(interactor: CharacterListUseCase){
         self.interactor = interactor
-        self.model = []
     }
     
     
