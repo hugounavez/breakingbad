@@ -17,22 +17,19 @@ class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, 
         self.model = data
     }
     
-    private var interactor : CharacterListUseCase
+    public var interactor : CharacterListInteractor
     private let router = CharacterListViewRouter()
     
     @Published var model : [BreakingBadCharacter] = []
     
-    init(interactor: CharacterListUseCase){
+    init(interactor: CharacterListInteractor){
         self.interactor = interactor
+        self.interactor.delegate = self
     }
     
     
     func getCharacterList(){
-        self.interactor.getCharacterList { rawResult in
-            guard let result = rawResult else {return}
-            self.model = result
-            
-        }
+        self.interactor.getCharacterList()
     }
     
     func linkBuilder<Content: View>(
@@ -42,7 +39,6 @@ class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, 
         NavigationLink(
           destination: router.makeDetailView(
             for: trip)) {
-                
               content()
         }
     }

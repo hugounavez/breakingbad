@@ -8,6 +8,14 @@
 import XCTest
 @testable import BreakingBad
 
+class CharacterListInteractorTestObject :  CharacterListInteractor {
+    
+      
+    override func getCharacterList() {
+        self.model = MockUpDataModel.data
+    }
+}
+
 class CharacterListInteractorTests: XCTestCase, CharacterListInteractorDelegate {
     
     var sut : CharacterListInteractor!
@@ -20,7 +28,8 @@ class CharacterListInteractorTests: XCTestCase, CharacterListInteractorDelegate 
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.sut = CharacterListInteractor(model: MockUpDataModel.data)
+        self.sut = CharacterListInteractorTestObject()
+        self.sut.getCharacterList()
         self.sut.delegate = self
         self.data = []
     }

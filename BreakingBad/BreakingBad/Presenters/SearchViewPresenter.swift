@@ -29,12 +29,12 @@ class SearchViewPresenter : ObservableObject, CharacterListPresenterUseCase {
     }
     
     func getCharacterList(){
-        self.interactor.getCharacterList { rawResult in
-            guard let result = rawResult else {return}
-            self.originalModel = result
-            self.model = self.originalModel
-
-        }
+//        self.interactor.getCharacterList { rawResult in
+//            guard let result = rawResult else {return}
+//            self.originalModel = result
+//            self.model = self.originalModel
+//
+//        }
     }
     
     init(interactor: CharacterListUseCase){

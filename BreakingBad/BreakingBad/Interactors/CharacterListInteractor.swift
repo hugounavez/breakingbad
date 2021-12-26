@@ -12,11 +12,12 @@ protocol CharacterListInteractorDelegate : AnyObject {
 }
 
 protocol CharacterListUseCase : AnyObject {
-    func getCharacterList(completion: @escaping ([BreakingBadCharacter]?) -> ())
+    func getCharacterList()
     
     func filterByNameAndSeason(searchText: String, season : Season)
     
     func filterBySeason(season: Season)
+        
 }
 
 
@@ -24,17 +25,17 @@ class CharacterListInteractor : CharacterListUseCase {
     func filterBySeason(season: Season) {
         switch season {
         case .all:
-            self.model = self.originalModel
+            self.delegate?.modelHasChanged(data: self.model)
         case .one:
-            self.model = self.originalModel.filter({$0.appearance.contains(1)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.appearance.contains(1)}))
         case .two:
-            self.model = self.originalModel.filter({$0.appearance.contains(2)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.appearance.contains(2)}))
         case .three:
-            self.model = self.originalModel.filter({$0.appearance.contains(3)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.appearance.contains(3)}))
         case .four:
-            self.model = self.originalModel.filter({$0.appearance.contains(4)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.appearance.contains(4)}))
         default:
-            self.model = self.originalModel.filter({$0.appearance.contains(5)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.appearance.contains(5)}))
             break
         }
     }
@@ -42,27 +43,25 @@ class CharacterListInteractor : CharacterListUseCase {
     
     weak var delegate : CharacterListInteractorDelegate?
     
-    private var originalModel : [BreakingBadCharacter]!
-    
     func filterByNameAndSeason(searchText: String, season: Season) {
         switch season {
         case .all:
-            self.model = self.originalModel.filter({$0.name.contains(searchText)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.name.contains(searchText)}))
         case .one:
-            self.model = self.originalModel.filter({$0.name.contains(searchText) && $0.appearance.contains(1)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.name.contains(searchText) && $0.appearance.contains(1)}))
         case .two:
-            self.model = self.originalModel.filter({$0.name.contains(searchText) && $0.appearance.contains(2)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.name.contains(searchText) && $0.appearance.contains(2)}))
         case .three:
-            self.model = self.originalModel.filter({$0.name.contains(searchText) && $0.appearance.contains(3)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.name.contains(searchText) && $0.appearance.contains(3)}))
         case .four:
-            self.model = self.originalModel.filter({$0.name.contains(searchText) && $0.appearance.contains(4)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.name.contains(searchText) && $0.appearance.contains(4)}))
         default:
-            self.model = self.originalModel.filter({$0.name.contains(searchText) && $0.appearance.contains(5)})
+            self.delegate?.modelHasChanged(data: self.model.filter({$0.name.contains(searchText) && $0.appearance.contains(5)}))
             break
         }
     }
     
-    var model: [BreakingBadCharacter] {
+    var model: [BreakingBadCharacter] = [] {
         didSet{
             // Notify presenter
             self.delegate?.modelHasChanged(data: self.model)
@@ -70,17 +69,16 @@ class CharacterListInteractor : CharacterListUseCase {
     }
     
     init(model: [BreakingBadCharacter] = []){
-        self.originalModel = model
-        self.model = model
+        self.model = []
     }
     
-    func getCharacterList(completion: @escaping ([BreakingBadCharacter]?) -> ()){
+    func getCharacterList(){
         ServiceLayer.request(router: .getCharacters) { (result: Result<[BreakingBadCharacter], Error>) in
             switch result {
               case .success(let data):
-                completion(data)
+                self.model = data
               case .failure:
-                completion(nil)
+                print("Error requesting data")
               }
         }
     }
