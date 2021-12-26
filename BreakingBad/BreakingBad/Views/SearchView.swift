@@ -13,10 +13,18 @@ struct SearchView: View {
     @ObservedObject var presenter : SearchViewPresenter
     @State private var showingSheet = false
     
+    @State var test = false
+    
     var body: some View {
         NavigationView {
+            ZStack{
+
+                
+                
         VStack {
             SearchBar(searchText: $presenter.searchText, isSearching: $isSearching)
+            
+
                 List{
                     if (self.presenter.model.count > 0){
                         ForEach(0...self.presenter.model.count - 1, id: \.self) { index in
@@ -29,13 +37,41 @@ struct SearchView: View {
             
         }
             
+                if (test){
+                    
+                    VStack{
+                        
+                        Text("Filter by session: ").padding()
+                        
+                        Picker("Season", selection: $presenter.season){
+                            Text("All").tag(Season.all)
+                            Text("Season One").tag(Season.one)
+                            Text("Season Two").tag(Season.two)
+                            Text("Season Three").tag(Season.three)
+                            
+                        }.background(.white)
+    
+                        Button("Dismiss") {
+                            //self.test = false
+                        }.cornerRadius(10)
+                        .background(.brown)
+                        
+                        
+                    }.background(.white)
+                        .cornerRadius(10)
+                        //.frame(width: 400, height: 400, alignment: .center)
+                    
+                }
+                
+            }
             
         .navigationTitle("Search")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("+") {
                     print("Help tapped!")
-                    showingSheet.toggle()
+                    //showingSheet.toggle()
+                    self.test.toggle()
                 }.sheet(isPresented: $showingSheet) {
                     SheetView(selectedOption: $presenter.season)
                 }
