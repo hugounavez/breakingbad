@@ -19,6 +19,16 @@ struct BreakingBadCharacter : Codable, Identifiable{
     var occupation : [String]
     var appearance : [Int]
     
+    var seasons : String {
+        get {
+            var temp : [String] = []
+            self.appearance.forEach { element in
+                temp.append("\(element)")
+            }
+            return temp.joined(separator: ",")
+        }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name
         case id = "char_id"

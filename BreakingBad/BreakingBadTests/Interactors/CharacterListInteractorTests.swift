@@ -16,7 +16,7 @@ class CharacterListInteractorTestObject :  CharacterListInteractor {
     }
 }
 
-class CharacterListInteractorTests: XCTestCase, CharacterListInteractorDelegate {
+class CharacterListInteractorTests: XCTestCase, ModelListTransferProtocol {
     
     var sut : CharacterListInteractor!
     var data : [BreakingBadCharacter]!

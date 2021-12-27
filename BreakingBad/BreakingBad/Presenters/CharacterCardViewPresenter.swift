@@ -8,33 +8,23 @@
 import SwiftUI
 import Combine
 
-class CharacterCardViewPresenter: ObservableObject {
-    @Published var model : BreakingBadCharacter
-    @Published var seasonsLabel : String =  ""
-    
+class CharacterCardViewPresenter: ObservableObject, SingleModelObjectTransferProtocol {
     private let interactor: CharacterCardViewInteractor
+    @Published var model : BreakingBadCharacter
     
     init(interactor: CharacterCardViewInteractor){
         self.interactor = interactor
         self.model = self.interactor.model
-        self.setString()
+    }
+    
+    func modelHasChanged(data: BreakingBadCharacter) {
+        self.model = data
     }
     
     func updateModel(){
         // This is a symbolic update method, in case
         // it is needed in the future
-        self.interactor.requestData { result in
-            self.model = result
-            self.setString()
-        }
+        self.interactor.getData()
     }
     
-    func setString(){
-        self.seasonsLabel = ""
-        var temp : [String] = []
-        self.model.appearance.forEach { element in
-            temp.append("\(element)")
-        }
-        self.seasonsLabel = temp.joined(separator: ",")
-    }
 }

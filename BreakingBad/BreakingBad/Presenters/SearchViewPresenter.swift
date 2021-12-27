@@ -12,8 +12,6 @@ class SearchViewPresenter : ObservableObject, CharacterListPresenterUseCase {
     private var interactor : CharacterListUseCase
     
     @Published var model : [BreakingBadCharacter]
-    
-
     @Published var season : Season = .all
     
     var originalModel : [BreakingBadCharacter]
@@ -29,12 +27,12 @@ class SearchViewPresenter : ObservableObject, CharacterListPresenterUseCase {
     }
     
     func getCharacterList(){
-//        self.interactor.getCharacterList { rawResult in
-//            guard let result = rawResult else {return}
-//            self.originalModel = result
-//            self.model = self.originalModel
-//
-//        }
+        //        self.interactor.getCharacterList { rawResult in
+        //            guard let result = rawResult else {return}
+        //            self.originalModel = result
+        //            self.model = self.originalModel
+        //
+        //        }
     }
     
     init(interactor: CharacterListUseCase){
@@ -63,6 +61,6 @@ class SearchViewPresenter : ObservableObject, CharacterListPresenterUseCase {
         
     }
     
-
+    
     
 }

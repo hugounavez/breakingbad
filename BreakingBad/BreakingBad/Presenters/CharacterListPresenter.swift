@@ -12,11 +12,7 @@ protocol CharacterListPresenterUseCase {
 }
 
 
-class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, CharacterListInteractorDelegate{
-    func modelHasChanged(data: [BreakingBadCharacter]) {
-        self.model = data
-    }
-    
+class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, ModelListTransferProtocol{
     public var interactor : CharacterListInteractor
     private let router = CharacterListViewRouter()
     
@@ -27,6 +23,9 @@ class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, 
         self.interactor.delegate = self
     }
     
+    func modelHasChanged(data: [BreakingBadCharacter]) {
+        self.model = data
+    }
     
     func getCharacterList(){
         self.interactor.getCharacterList()
@@ -35,12 +34,12 @@ class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, 
     func linkBuilder<Content: View>(
         for trip: BreakingBadCharacter,
         @ViewBuilder content: () -> Content
-      ) -> some View {
+    ) -> some View {
         NavigationLink(
-          destination: router.makeDetailView(
-            for: trip)) {
-              content()
-        }
+            destination: router.makeDetailView(
+                for: trip)) {
+                    content()
+                }
     }
-
+    
 }

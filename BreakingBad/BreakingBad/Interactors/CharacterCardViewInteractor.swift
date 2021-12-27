@@ -7,15 +7,20 @@
 
 import Foundation
 
-class CharacterCardViewInteractor {
+protocol CharacterCardViewInteractorProtocol {
+    func getData()
+}
+
+class CharacterCardViewInteractor : CharacterCardViewInteractorProtocol {
     var model : BreakingBadCharacter
+    weak var delegate : SingleModelObjectTransferProtocol?
     
     init(model: BreakingBadCharacter){
         self.model = model
     }
     
-    func requestData(completion: @escaping (_ result: BreakingBadCharacter)->()) {
-            // Here will go for example the api request
-            completion(model)
+    func getData() {
+        self.delegate?.modelHasChanged(data: self.model)
     }
+    
 }

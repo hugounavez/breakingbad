@@ -8,34 +8,25 @@
 import SwiftUI
 import Combine
 
-class CharacterDetailPresenter : ObservableObject {
-    @Published var model : BreakingBadCharacter
-    @Published var seasonsLabel : String =  ""
+class CharacterDetailPresenter : ObservableObject, SingleModelObjectTransferProtocol {
     
     var interactor : CharacterDetailInteractor
-
+    @Published var model : BreakingBadCharacter
+    
     init(interactor: CharacterDetailInteractor){
         self.interactor = interactor
         self.model = self.interactor.model
-        self.setString()
+        self.interactor.delegate = self
+    }
+    
+    func modelHasChanged(data: BreakingBadCharacter) {
+        self.model = data
     }
     
     func updateModel(){
         // This is a symbolic update method, in case
         // it is needed in the future
-        self.interactor.requestData { result in
-            self.model = result
-            self.setString()
-        }
-    }
-    
-    func setString(){
-        self.seasonsLabel = ""
-        var temp : [String] = []
-        self.model.appearance.forEach { element in
-            temp.append("\(element)")
-        }
-        self.seasonsLabel = temp.joined(separator: ",")
+        self.interactor.getData()
     }
     
 }

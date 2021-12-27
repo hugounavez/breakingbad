@@ -44,7 +44,7 @@ struct CharacterCardView: View {
                 .frame(width: 250, height: 25, alignment: .leading)
             
             
-            Text(self.presenter.seasonsLabel).fontWeight(.regular)
+            Text(self.presenter.model.seasons).fontWeight(.regular)
                 .frame(width: 250, height: 25, alignment: .leading)
             
             

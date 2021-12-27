@@ -7,8 +7,12 @@
 
 import Foundation
 
-protocol CharacterListInteractorDelegate : AnyObject {
+protocol ModelListTransferProtocol : AnyObject {
     func modelHasChanged(data : [BreakingBadCharacter])
+}
+
+protocol SingleModelObjectTransferProtocol : AnyObject {
+    func modelHasChanged(data : BreakingBadCharacter)
 }
 
 protocol CharacterListUseCase : AnyObject {
@@ -17,7 +21,7 @@ protocol CharacterListUseCase : AnyObject {
     func filterByNameAndSeason(searchText: String, season : Season)
     
     func filterBySeason(season: Season)
-        
+    
 }
 
 
@@ -41,7 +45,7 @@ class CharacterListInteractor : CharacterListUseCase {
     }
     
     
-    weak var delegate : CharacterListInteractorDelegate?
+    weak var delegate : ModelListTransferProtocol?
     
     func filterByNameAndSeason(searchText: String, season: Season) {
         switch season {
@@ -75,11 +79,11 @@ class CharacterListInteractor : CharacterListUseCase {
     func getCharacterList(){
         ServiceLayer.request(router: .getCharacters) { (result: Result<[BreakingBadCharacter], Error>) in
             switch result {
-              case .success(let data):
+            case .success(let data):
                 self.model = data
-              case .failure:
+            case .failure:
                 print("Error requesting data")
-              }
+            }
         }
     }
     
