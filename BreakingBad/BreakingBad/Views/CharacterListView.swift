@@ -17,35 +17,39 @@ struct CharacterListView: View {
         
         NavigationView{
             ZStack{
-            VStack{
-                SearchBar(searchText: $presenter.searchText, isSearching: $isSearching)
-                
-                List{
-                    if (self.presenter.model.count > 0){
+                VStack{
+                    SearchBar(searchText: $presenter.searchText, isSearching: $isSearching)
                     
-                    ForEach(0...self.presenter.model.count - 1, id: \.self){
-                        index in
-                     
-                        let model = self.presenter.model[index]
-                        self.presenter.linkBuilder(for: model) {
-                            CharacterCardView(presenter: CharacterCardViewPresenter(interactor: CharacterCardViewInteractor(model: model)))
+                    List{
+                        if (self.presenter.model.count > 0){
+                            
+                            ForEach(0...self.presenter.model.count - 1, id: \.self){
+                                index in
+                                
+                                let model = self.presenter.model[index]
+                                self.presenter.linkBuilder(for: model) {
+                                    HStack{
+                                        Spacer()
+                                        CharacterCardView(presenter: CharacterCardViewPresenter(interactor: CharacterCardViewInteractor(model: model)))
+                                        Spacer()
+                                    }
+                                }
+                                
+                            }
+                            
                         }
                         
-                    }
-                
-                    }
-                    
-                }.navigationTitle("Breaking Bad")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("...") {
-                                self.filterVisible.toggle()
+                    }.navigationTitle("Breaking Bad")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("...") {
+                                    self.filterVisible.toggle()
+                                }
                             }
                         }
-                    }
+                    
+                } // End of VStack
                 
-            } // End of VStack
-            
                 if (self.filterVisible){
                     FilterDialog(selectedSeason: self.$presenter.season, filterVisible: self.$filterVisible)
                 }
@@ -53,12 +57,12 @@ struct CharacterListView: View {
             } // End of ZStack
             
         } // End of NavigationView
-            .onAppear {
-                self.presenter.getCharacterList()
-            }
+        .onAppear {
+            self.presenter.getCharacterList()
+        }
     }
     
-        
+    
 }
 
 struct CharacterListView_Previews: PreviewProvider {

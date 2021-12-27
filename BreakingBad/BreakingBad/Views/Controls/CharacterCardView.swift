@@ -55,8 +55,7 @@ struct CharacterCardView: View {
 
 struct CharacterCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let model = BreakingBadCharacter(name: "Juanchope", id: 1, birthday: "", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Szczenie_Jack_Russell_Terrier3.jpg/711px-Szczenie_Jack_Russell_Terrier3.jpg", status: "", nickname: "El zurdo", portrayed: "", category: "-", occupation: ["S"], appearance: [1])
-        let interactor = CharacterCardViewInteractor(model: model)
+        let interactor = CharacterCardViewInteractor(model: MockUpDataModel.data[0])
         let presenter = CharacterCardViewPresenter(interactor: interactor)
         
         Group {
