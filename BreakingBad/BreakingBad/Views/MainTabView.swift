@@ -20,10 +20,11 @@ struct MainTabView: View {
                 
             }
             
-            SearchView(presenter: SearchViewPresenter(interactor: SearchViewInteractor(model: model))).tabItem {
-                Image(systemName: "magnifyingglass")
-                Text("Test")
+            AboutView().tabItem {
+                Image(systemName: "person.crop.circle")
+                Text("About")
             }
+        
         }
         
     }

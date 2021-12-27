@@ -17,10 +17,29 @@ class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, 
     private let router = CharacterListViewRouter()
     
     @Published var model : [BreakingBadCharacter] = []
+    @Published var season : Season = .all {
+        didSet{
+            self.updateSearch()
+        }
+    }
+    @Published var searchText = "" {
+        didSet{
+        self.updateSearch()
+        }
+    }
     
     init(interactor: CharacterListInteractor){
         self.interactor = interactor
         self.interactor.delegate = self
+    }
+    
+    func updateSearch(){
+        print(self.season)
+        guard self.searchText != "" else{
+            self.interactor.filterBySeason(season: self.season)
+            return
+        }
+        self.interactor.filterByNameAndSeason(searchText: self.searchText, season: self.season)
     }
     
     func modelHasChanged(data: [BreakingBadCharacter]) {

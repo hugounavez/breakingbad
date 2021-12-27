@@ -9,7 +9,16 @@ import SwiftUI
 
 struct AboutView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            VStack{
+                List {
+                    Link("Linkedin", destination: URL(string: "https://www.linkedin.com/in/hugoreyesamell/")!)
+                    Link("Personal website", destination: URL(string: "https://www.hugoreyes.info/")!)
+                }
+                
+            }
+            .navigationBarTitle(Text("About me"), displayMode: .automatic)
+        }
     }
 }
 

@@ -10,13 +10,16 @@ import SwiftUI
 struct CharacterListView: View {
     
     @ObservedObject var presenter : CharacterListPresenter
-    @State private var showingSheet = false
-    @State private var selectedOption = Season.all
+    @State var isSearching = false
+    @State var filterVisible = false
     
     var body: some View {
         
         NavigationView{
+            ZStack{
             VStack{
+                SearchBar(searchText: $presenter.searchText, isSearching: $isSearching)
+                
                 List{
                     if (self.presenter.model.count > 0){
                     
@@ -35,17 +38,19 @@ struct CharacterListView: View {
                 }.navigationTitle("Breaking Bad")
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("+") {
-                                print("Help tapped!")
-                                showingSheet.toggle()
-                            }.sheet(isPresented: $showingSheet) {
-                                SheetView(selectedOption: self.$selectedOption)
+                            Button("...") {
+                                self.filterVisible.toggle()
                             }
                         }
                     }
                 
             } // End of VStack
             
+                if (self.filterVisible){
+                    FilterDialog(selectedSeason: self.$presenter.season, filterVisible: self.$filterVisible)
+                }
+                
+            } // End of ZStack
             
         } // End of NavigationView
             .onAppear {
