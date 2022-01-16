@@ -14,10 +14,17 @@ struct AboutView: View {
                 List {
                     Link("Linkedin", destination: URL(string: "https://www.linkedin.com/in/hugoreyesamell/")!)
                     Link("Personal website", destination: URL(string: "https://www.hugoreyes.info/")!)
-                }
-                
-            }
+                }// Ignore safe area to take up whole screen
+//                .listRowBackground(Color.clear.ignoresSafeArea())
+//
+
+            }.padding(.bottom)
             .navigationBarTitle(Text("About me"), displayMode: .automatic)
+            .background(Color(red: 0.997, green: 0.69, blue: 0.018))
+            
+        }.onAppear {
+            //UITableView.appearance().backgroundColor = UIColor(red: 0.997, green: 0.69, blue: 0.018, alpha: 1)
+            
         }
     }
 }

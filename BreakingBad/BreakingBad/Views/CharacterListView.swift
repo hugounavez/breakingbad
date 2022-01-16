@@ -36,10 +36,12 @@ struct CharacterListView: View {
                                 }
                                 
                             }
-                            
+                            // Ignore safe area to take up whole screen
+                            .listRowBackground(Color.clear.ignoresSafeArea())
                         }
-                        
-                    }.navigationTitle("Breaking Bad")
+                    }// Ignore safe area to take up whole screen
+                    .background(Color.purple.ignoresSafeArea())
+                        .navigationTitle("Breaking Bad")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button("...") {
@@ -54,10 +56,11 @@ struct CharacterListView: View {
                     FilterDialog(selectedSeason: self.$presenter.season, filterVisible: self.$filterVisible)
                 }
                 
-            } // End of ZStack
+            }.background(Color(red: 0.997, green: 0.69, blue: 0.018)) // End of ZStack
             
         } // End of NavigationView
         .onAppear {
+            UITableView.appearance().backgroundColor = UIColor(red: 0.997, green: 0.69, blue: 0.018, alpha: 1)
             self.presenter.getCharacterList()
         }
     }

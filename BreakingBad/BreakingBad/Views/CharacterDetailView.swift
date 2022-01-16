@@ -8,64 +8,100 @@
 import SwiftUI
 import Kingfisher
 
+struct DetailLabelTitleSection : View {
+    var mainLabel : String
+    var body: some View {
+        HStack{
+            Text(mainLabel).fontWeight(.bold)
+                .foregroundColor(.white)
+                .frame(width: 250, height: 35, alignment: .leading)
+        }
+    }
+}
+
+struct DetailLabelSubtitleSection : View {
+    var label : String
+    var body: some View {
+        HStack{
+            Text(label).fontWeight(.regular)
+                .foregroundColor(.white)
+                .frame(width: 250, height: 35, alignment: .leading)
+     
+        }
+    }
+}
 
 struct CharacterDetailView: View {
     
     @ObservedObject  var presenter: CharacterDetailPresenter
     var body: some View {
-        ScrollView{
-            VStack{
+        Group{
+            ZStack{
+                VStack{
+                    Color(red: 0.001, green: 0.177, blue: -0.001).edgesIgnoringSafeArea(.all)
+                }
                 
-                if let imageUrl = self.presenter.model.img {
-                    if let url = URL(string: imageUrl){
-                        KFImage(url).placeholder({
-                            Image("araguaney").resizable()
-                            //.aspectRatio(contentMode: .fill)
+            ScrollView{
+                VStack (alignment: .center, spacing: 1){
+                    
+                    if let imageUrl = self.presenter.model.img {
+                        if let url = URL(string: imageUrl){
+                            KFImage(url).placeholder({
+                                Image("araguaney").resizable()
+                                //.aspectRatio(contentMode: .fill)
+                                    .foregroundColor(Color(red: 0.286, green: 0.566, blue: 0.33))
+                                    .padding()
+                                    .cornerRadius(10)
+                                    .frame(width: 250, height: 350, alignment: .center)
+                            }).resizable()
                                 .cornerRadius(10)
                                 .frame(width: 250, height: 350, alignment: .center)
-                        }).resizable()
-                            .cornerRadius(10)
-                            .frame(width: 250, height: 350, alignment: .center)
+                        }
                     }
-                }
+                    
+                    
+                    DetailLabelTitleSection(mainLabel: "Name")
+                    
+                    if let name = self.presenter.model.name {
+                        DetailLabelSubtitleSection(label: name)
+                    }
+                    
+                    DetailLabelTitleSection(mainLabel: "Status")
+                    
+                    if let status = self.presenter.model.status {
+                        DetailLabelSubtitleSection(label: status)
+                    }
+                    
+                    DetailLabelTitleSection(mainLabel: "Nickname")
+                    
+                    if let nickname = self.presenter.model.nickname {
+                        DetailLabelSubtitleSection(label: nickname)
+                    }
+                    
+                    DetailLabelTitleSection(mainLabel: "Seasons")
+                    
+                    DetailLabelSubtitleSection(label: self.presenter.model.seasons)
+                    
+                    //72 144 84
+                    
+                } // End of VStack
                 
-                Text("Name").fontWeight(.medium)
-                    .frame(width: 250, height: 25, alignment: .leading)
-                
-                if let name = self.presenter.model.name {
-                    Text(name).fontWeight(.regular)
-                        .frame(width: 250, height: 25, alignment: .leading)
-                }
-                
-                Text("Status").fontWeight(.medium)
-                    .frame(width: 250, height: 25, alignment: .leading)
-                
-                if let status = self.presenter.model.status {
-                    Text(status).fontWeight(.regular)
-                        .frame(width: 250, height: 25, alignment: .leading)
-                }
-                
-                Text("Nickname").fontWeight(.medium)
-                    .frame(width: 250, height: 25, alignment: .leading)
-                
-                if let nickname = self.presenter.model.nickname {
-                    Text(nickname).fontWeight(.regular)
-                        .frame(width: 250, height: 25, alignment: .leading)
-                }
-                
-                
-                Text("Seasons").fontWeight(.medium)
-                    .frame(width: 250, height: 25, alignment: .leading)
-                
-                
-                Text(self.presenter.model.seasons).fontWeight(.regular)
-                    .frame(width: 250, height: 25, alignment: .leading)
-                
-                
-            } // End of VStack
+            }
             
+                
+
+                    .navigationBarTitle(Text("About me"), displayMode: .inline)
+           
+      
+            }
+            
+           
+
+        }.onAppear {
+            //UIScrollView.appearance().backgroundColor = UIColor.systemPink
         }
     }
+    
 }
 
 struct CharacterDetailView_Previews: PreviewProvider {

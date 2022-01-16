@@ -18,38 +18,44 @@ struct CharacterCardView: View {
                 if let url = URL(string: imageUrl){
                     KFImage(url).placeholder({
                         Image("araguaney").resizable()
-                            //.aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode: .fit)
                             .cornerRadius(10)
-                            .frame(width: 250, height: 350, alignment: .center)
+                            .frame(width: 220, height: 300, alignment: .center)
                     }).resizable()
-                        .cornerRadius(10)
-                        .frame(width: 250, height: 350, alignment: .center)
+                        .frame(width: 220, height: 300, alignment: .center)
                 }
             }
             
             if let name = self.presenter.model.name {
                 Text(name)
-                    .fontWeight(.medium)
-                    .frame(width: 250, height: 25, alignment: .leading)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(width: 180, height: 25, alignment: .leading).padding(.leading)
                     
             }
             
             if let nickname = self.presenter.model.nickname{
                 Text(nickname)
-                    .frame(width: 250, height: 25, alignment: .leading)
+                    .foregroundColor(.white)
+                    .frame(width: 180, height: 25, alignment: .leading).padding(.leading)
             }
              
             
-            Text("Seasons").fontWeight(.medium)
-                .frame(width: 250, height: 25, alignment: .leading)
+            Text("Seasons").fontWeight(.bold)
+                .foregroundColor(.white)
+                .frame(width: 180, height: 25, alignment: .leading).padding(.leading)
             
             
             Text(self.presenter.model.seasons).fontWeight(.regular)
-                .frame(width: 250, height: 25, alignment: .leading)
+                .foregroundColor(.white)
+                .frame(width: 180, height: 25, alignment: .leading).padding(.leading).padding(.bottom)
             
             
-        }
-        
+        }.background(
+            LinearGradient(gradient: Gradient(colors: [.green, Color(red: 0.001, green: 0.177, blue: -0.001)]), startPoint: .top, endPoint: .bottom))
+
+            .cornerRadius(20)
+          
     }
 }
 
@@ -59,7 +65,10 @@ struct CharacterCardView_Previews: PreviewProvider {
         let presenter = CharacterCardViewPresenter(interactor: interactor)
         
         Group {
-            CharacterCardView(presenter: presenter)
+            VStack{
+                Text("tes")
+                CharacterCardView(presenter: presenter).padding()
+            }.background(Color(red: 0.997, green: 0.69, blue: 0.018))
         }
     }
 }
