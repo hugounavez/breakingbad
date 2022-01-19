@@ -88,10 +88,7 @@ struct CharacterDetailView: View {
                 
             }
             
-                
-
                     .navigationBarTitle(Text("About me"), displayMode: .inline)
-           
       
             }
             

@@ -19,7 +19,6 @@ struct CharacterListView: View {
             ZStack{
                 VStack{
                     SearchBar(searchText: $presenter.searchText, isSearching: $isSearching)
-                    
                     List{
                         if (self.presenter.model.count > 0){
                             
