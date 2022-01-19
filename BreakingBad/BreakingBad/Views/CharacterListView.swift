@@ -26,13 +26,18 @@ struct CharacterListView: View {
                                 index in
                                 
                                 let model = self.presenter.model[index]
-                                self.presenter.linkBuilder(for: model) {
+                                //self.presenter.linkBuilder(for: model) {
                                     HStack{
                                         Spacer()
-                                        CharacterCardView(presenter: CharacterCardViewPresenter(interactor: CharacterCardViewInteractor(model: model)))
+                                        NavigationLink(destination: CharacterDetailView(presenter: CharacterDetailPresenter(interactor: CharacterDetailInteractor(model: model))), label: {
+                                            CharacterCardView(presenter: CharacterCardViewPresenter(interactor: CharacterCardViewInteractor(model: model)))
+                                        })
+                                        
+                                        
+                                        
                                         Spacer()
                                     }
-                                }
+                                //}
                                 
                             }
                             // Ignore safe area to take up whole screen
@@ -40,7 +45,8 @@ struct CharacterListView: View {
                         }
                     }// Ignore safe area to take up whole screen
                     .background(Color.purple.ignoresSafeArea())
-                        .navigationTitle("Breaking Bad")
+                        //.navigationTitle("Breaking Bad")
+                        .navigationBarTitle(Text("Home"), displayMode: .inline)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button("...") {
@@ -73,7 +79,7 @@ struct CharacterListView_Previews: PreviewProvider {
         let interactor = CharacterListInteractor(model: model)
         let presenter = CharacterListPresenter(interactor: interactor)
         
-        CharacterListView(presenter: presenter)
+        //CharacterListView(presenter: presenter, pruebita: true)
     }
 }
 

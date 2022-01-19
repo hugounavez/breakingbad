@@ -9,22 +9,37 @@ import SwiftUI
 
 
 struct CustomTabView: View {
-    @State var selectedTab = "person.crop.circle"
+    @State var selectedTab = "house.fill"
     var images = ["house.fill", "person.crop.circle"]
-
     let model =  [BreakingBadCharacter(name: "", id: 1, birthday: "", img: "", status: "", nickname: "", portrayed: "", category: "", occupation: [""], appearance: [1])]
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)){
-            
+        //VStack(spacing: 0){
+//
             switch selectedTab {
             case "house.fill":
-                CharacterListView(presenter: CharacterListPresenter(interactor: CharacterListInteractor(model: model)))
+            CharacterListView(presenter: CharacterListPresenter(interactor: CharacterListInteractor(model: model)))
             default:
                 AboutView()
             }
-            
+//
 
+//            TabView(selection: $selectedTab){
+//                
+//                CharacterListView(presenter: CharacterListPresenter(interactor: CharacterListInteractor(model: model))).tag("house.fill")
+//                
+//                AboutView().tag("person.crop.circle")
+//                
+//            }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+//                .ignoresSafeArea(.all, edges: .bottom)
+//            
+            
+            
+            
+            
+            
+            
             HStack(spacing: 0){
                 
             Spacer()
@@ -57,7 +72,10 @@ struct CustomTabView: View {
         
         .onAppear {
             
-            self.selectedTab = "house.fill"
+            //self.selectedTab = "house.fill"
+        }
+        
+        .onDisappear {
         }
     }
 }

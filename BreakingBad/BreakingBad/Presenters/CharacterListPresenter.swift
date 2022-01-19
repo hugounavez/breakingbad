@@ -14,7 +14,7 @@ protocol CharacterListPresenterUseCase {
 
 class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, ModelListTransferProtocol{
     public var interactor : CharacterListInteractor
-    private let router = CharacterListViewRouter()
+    //private let router = CharacterListViewRouter()
     
     @Published var model : [BreakingBadCharacter] = []
     @Published var season : Season = .all {
@@ -50,15 +50,15 @@ class CharacterListPresenter : ObservableObject, CharacterListPresenterUseCase, 
         self.interactor.getCharacterList()
     }
     
-    func linkBuilder<Content: View>(
-        for trip: BreakingBadCharacter,
-        @ViewBuilder content: () -> Content
-    ) -> some View {
-        NavigationLink(
-            destination: router.makeDetailView(
-                for: trip)) {
-                    content()
-                }
-    }
+//    func linkBuilder<Content: View>(
+//        for trip: BreakingBadCharacter,
+//        @ViewBuilder content: () -> Content
+//    ) -> some View {
+//        NavigationLink(
+//            destination: router.makeDetailView(
+//                for: trip)) {
+//                    content()
+//                }
+//    }
     
 }

@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-
-class CharacterListViewRouter {
-  func makeDetailView(for model: BreakingBadCharacter) -> some View {
-            
-      let interactor = CharacterDetailInteractor(model: model)
-      let presenter = CharacterDetailPresenter(interactor: interactor)
-      return CharacterDetailView(presenter: presenter)
-  }
-}
+//
+//class CharacterListViewRouter {
+//  func makeDetailView(for model: BreakingBadCharacter) -> some View {
+//            
+//      let interactor = CharacterDetailInteractor(model: model)
+//      let presenter = CharacterDetailPresenter(interactor: interactor)
+//      return CharacterDetailView(presenter: pre)
+//  }
+//}

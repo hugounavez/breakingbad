@@ -32,7 +32,6 @@ struct DetailLabelSubtitleSection : View {
 }
 
 struct CharacterDetailView: View {
-    
     @ObservedObject  var presenter: CharacterDetailPresenter
     var body: some View {
         Group{
@@ -41,7 +40,7 @@ struct CharacterDetailView: View {
                     Color(red: 0.001, green: 0.177, blue: -0.001).edgesIgnoringSafeArea(.all)
                 }
                 
-            ScrollView{
+                ScrollView(showsIndicators: false){
                 VStack (alignment: .center, spacing: 1){
                     
                     if let imageUrl = self.presenter.model.img {
@@ -80,35 +79,37 @@ struct CharacterDetailView: View {
                     
                     DetailLabelTitleSection(mainLabel: "Seasons")
                     
-                    DetailLabelSubtitleSection(label: self.presenter.model.seasons)
-                    
+                    DetailLabelSubtitleSection(label: self.presenter.model.seasons).padding(.bottom, 80)
                     //72 144 84
                     
                 } // End of VStack
                 
             }
+            .padding(.top, 70)
             
-                    .navigationBarTitle(Text("About me"), displayMode: .inline)
-      
+                    .navigationBarTitle(Text(""), displayMode: .inline)
+                    .edgesIgnoringSafeArea(.all)
             }
             
            
 
         }.onAppear {
-            //UIScrollView.appearance().backgroundColor = UIColor.systemPink
+
+            
+            //UINavigationBar.changeAppearance(clear: true)
         }
-    }
     
+    }
 }
 
-struct CharacterDetailView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        let model = BreakingBadCharacter(name: "Juanchope", id: 1, birthday: "", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Szczenie_Jack_Russell_Terrier3.jpg/711px-Szczenie_Jack_Russell_Terrier3.jpg", status: "Perrito", nickname: "El zurdo", portrayed: "", category: "-", occupation: ["S"], appearance: [1])
-        
-        let interactor =  CharacterDetailInteractor(model: model)
-        let presenter = CharacterDetailPresenter(interactor: interactor)
-        
-        CharacterDetailView(presenter: presenter)
-    }
-}
+//struct CharacterDetailView_Previews: PreviewProvider {
+//    
+//    static var previews: some View {
+//        let model = BreakingBadCharacter(name: "Juanchope", id: 1, birthday: "", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Szczenie_Jack_Russell_Terrier3.jpg/711px-Szczenie_Jack_Russell_Terrier3.jpg", status: "Perrito", nickname: "El zurdo", portrayed: "", category: "-", occupation: ["S"], appearance: [1])
+//        
+//        let interactor =  CharacterDetailInteractor(model: model)
+//        let presenter = CharacterDetailPresenter(interactor: interactor)
+//        
+//        CharacterDetailView(presenter: presenter)
+//    }
+//}
