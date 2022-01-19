@@ -43,9 +43,11 @@ struct CharacterListView: View {
                             // Ignore safe area to take up whole screen
                             .listRowBackground(Color.clear.ignoresSafeArea())
                         }
+                            
                     }// Ignore safe area to take up whole screen
-                    .background(Color.purple.ignoresSafeArea())
-                        //.navigationTitle("Breaking Bad")
+                    .padding(.bottom, 70)
+                    //.background(Color.purple.ignoresSafeArea())
+                      
                         .navigationBarTitle(Text("Home"), displayMode: .inline)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
