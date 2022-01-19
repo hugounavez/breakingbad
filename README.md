@@ -41,3 +41,9 @@ The rest of communication was using the `Combine` framework with its binding, pu
 
 ![image info](./images/diagram.png)
 
+
+
+https://user-images.githubusercontent.com/17181046/150057647-dc0150e7-a0a0-45aa-8a04-ab34bee60ffb.mov
+
+
+
